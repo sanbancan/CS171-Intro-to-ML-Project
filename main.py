@@ -5,8 +5,6 @@ from home import HomePage
 from details import DetailsPage
 from model import model
 from tensorflow.keras.models import load_model
-
-# Set appearance mode
 ctk.set_appearance_mode("Light")
 
 class View(ctk.CTkFrame):
@@ -55,7 +53,6 @@ class View(ctk.CTkFrame):
         self.details_page.set_details(image_path, result)
         self.show_frame(self.details_page)
 
-# Main entry point
 if __name__ == "__main__":
     root = ctk.CTk()
     root.title("Iceberg Detection and Analysis")
