@@ -15,7 +15,7 @@ class AnalysisPage(Page):
         self.gallery = gallery
         self.details_page = details_page
         self.uploaded_image = None
-        self.model = model 
+        self.model = model
 
         title_label = tk.Label(self, text="Choose a photo to upload for analysis",
                                font=("Tw Cen MT", 40),
@@ -49,13 +49,19 @@ class AnalysisPage(Page):
 
     def submit_photo(self):
         if self.uploaded_image:
-            processed_image = self.process_image(self.uploaded_image)
+            saved_image_path = os.path.join(self.images_folder, os.path.basename(self.uploaded_image))
+            img = Image.open(self.uploaded_image)
+            img.save(saved_image_path)
+            processed_image = self.process_image(saved_image_path)
             prediction = self.model.predict(processed_image)
-            threshold = 0.3
-            result = "Iceberg" if prediction[0] > threshold else "Ship"
+            threshold = 0.5
+            result = "Iceberg" if prediction[0] > threshold else "Not an iceberg"
             print(f"Prediction: {result}")
-            self.details_page.set_details(self.uploaded_image, result)  
-            self.master.open_details_page(self.uploaded_image, result)  
+
+            self.gallery.add_image(saved_image_path)
+            self.details_page.set_details(saved_image_path, result)
+            self.master.open_details_page(saved_image_path, result)
+
         else:
             print("No image uploaded.")
 
