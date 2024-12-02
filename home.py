@@ -38,4 +38,4 @@ class HomePage(Page):
                                   cursor="hand2")
         repo_label.pack(side='bottom', pady=(20, 10), ipady=20)
         repo_label.bind("<Button-1>", lambda e:
-            callback("https://github.com/levictoria0117/CS171-IcebergDetection"))
+            callback("https://github.com/levictoria0117/cs171-final-project"))
