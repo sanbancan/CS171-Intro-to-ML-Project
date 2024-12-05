@@ -61,6 +61,7 @@ class AnalysisPage(Page):
             img = Image.open(self.uploaded_image)
             img.save(saved_image_path)
             processed_image = self.process_image(saved_image_path)
+            self.model.load_weights('modified_model.weights.h5')
             result = predict_image(self.model, processed_image)
             self.master.after(0, lambda: self._update_gui_after_prediction(saved_image_path, result))
         except Exception as e:
