@@ -37,3 +37,5 @@ class DetailsPage(Page):
 
     def display_result(self):
         self.result_label.config(text=f"Prediction: {self.result}")
+
+
