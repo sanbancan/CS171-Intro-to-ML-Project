@@ -18,8 +18,7 @@ def load_data(train_file_path, test_file_path, test_size=0.2, random_state=42):
     # Load and preprocess training data
     X_train = np.array([
         np.stack([
-            np.array(instance['band_1'], dtype=np.float32).reshape(75, 75),
-            np.array(instance['band_2'], dtype=np.float32).reshape(75, 75)
+            np.array(instance['band_1'], dtype=np.float32).reshape(75, 75)
         ], axis=-1)
         for instance in train_data
     ])
@@ -28,8 +27,7 @@ def load_data(train_file_path, test_file_path, test_size=0.2, random_state=42):
     # Load and preprocess test data
     X_test = np.array([
         np.stack([
-            np.array(instance['band_1'], dtype=np.float32).reshape(75, 75),
-            np.array(instance['band_2'], dtype=np.float32).reshape(75, 75)
+            np.array(instance['band_1'], dtype=np.float32).reshape(75, 75)
         ], axis=-1)
         for instance in test_data
     ])
