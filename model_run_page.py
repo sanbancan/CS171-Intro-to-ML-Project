@@ -57,7 +57,7 @@ class ModelRunPage(ctk.CTkFrame):
         self.log("Loading and preprocessing data...")
         train_file = r'dataset/train.json/data/processed/train.json'
         test_file = r'dataset/test.json/data/processed/test.json'
-        X_train, y_train, X_val, y_val, _ = load_data(train_file, test_file)
+        X_train, y_train, X_val, y_val, X_test = load_data(train_file, test_file)
         self.log("Data loaded. Training the model...")
 
         model = self.model_creator()
