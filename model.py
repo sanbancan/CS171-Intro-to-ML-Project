@@ -45,16 +45,17 @@ def preprocess(X):
     X_normalized = np.array([(X - np.min(X)) / (np.max(X) - np.min(X)) for X in X])
     return X_normalized
 
-batch_size = 32
+batch_size = 16
 num_epochs = 50 # change to increase or decrease the number of epochs
 kernel_size = 3 #
 pool_size = 2
-conv_depth_1 = 32
-conv_depth_2 = 64
-conv_depth_3 = 128
+conv_depth_1 = 128
+conv_depth_2 = 256
+conv_depth_3 = 512
+conv_depth_4 = 1024
 dense_1 = 128
 dense_2 = 1
-drop_out = 0.3
+drop_out = 0.2
 weight_decay = 1e-4
 
 def create_model():
@@ -76,13 +77,13 @@ def create_model():
         MaxPooling2D(pool_size=(pool_size, pool_size)),
 
         ## section can be uncommented to add another convolutional layer (3 --> 4) 
-        # Conv2D(256, (kernel_size, kernel_size), padding='same', kernel_regularizer=l2(weight_decay)),
-        # BatchNormalization(),
-        # Activation('relu'),
-        # MaxPooling2D(pool_size=(pool_size, pool_size)),
+        Conv2D(conv_depth_4, (kernel_size, kernel_size), padding='same', kernel_regularizer=l2(weight_decay)),
+        BatchNormalization(),
+        Activation('relu'),
+        MaxPooling2D(pool_size=(pool_size, pool_size)),
 
-        # GlobalAveragePooling2D(), # uncomment to use, comment out Flatten()
-        Flatten(), 
+        GlobalAveragePooling2D(), # uncomment to use, comment out Flatten()
+        # Flatten(), 
         Dense(dense_1, kernel_regularizer=l2(weight_decay)),
         Activation('relu'),
         Dropout(drop_out),
