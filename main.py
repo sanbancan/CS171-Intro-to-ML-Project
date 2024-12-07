@@ -15,7 +15,7 @@ class View(ctk.CTkFrame):
         self.gallery = GalleryPage(self)
         self.details_page = DetailsPage(self)
         self.home = HomePage(self)
-        self.model_run = ModelRunPage(self, model_creator=create_model)  # Pass model creator function
+        self.model_run = ModelRunPage(self, model_creator=create_model)
         self.analysis = AnalysisPage(gallery=self.gallery, master=self, model=create_model(), details_page=self.details_page)
 
         self.sidebar = ctk.CTkFrame(self, width=200)
@@ -65,7 +65,7 @@ class View(ctk.CTkFrame):
 if __name__ == "__main__":
     root = ctk.CTk()
     root.title("Iceberg Detection and Analysis")
-    root.geometry("1080x720")
+    root.geometry("1280x820")
     main = View(root)
     main.pack(side="top", fill="both", expand=True)
     root.mainloop()
