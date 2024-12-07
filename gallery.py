@@ -49,3 +49,4 @@ class GalleryPage(Page):
     def open_details_page(self, image_path):
         self.master.open_details_page(image_path)
 
+
