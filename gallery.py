@@ -1,52 +1,45 @@
-import os 
 import customtkinter as ctk
 import tkinter as tk
-from PIL import Image, ImageTk
 from page import Page
+import webbrowser
 
-class GalleryPage(Page):
+class HomePage(Page):
     def __init__(self, master, *args, **kwargs):
         super().__init__(master, *args, **kwargs)
-        self.images = []
-        title_label = tk.Label(self, text="Gallery", 
+
+        def callback(url):
+            webbrowser.open_new_tab(url)
+        
+        title_label = tk.Label(self, text="Iceberg Detection and Analysis", 
                                font=("Tw Cen MT", 40), 
-                               fg='#3a7ebf', bg='#cfcfcf')
+                               bg='#cfcfcf')
         title_label.pack(pady=(20, 0))
         
-        self.image_frame = tk.Frame(self)
-        self.image_frame.pack(pady=(10, 10))
+        description_label = tk.Label(self, text=("Data regarding icebergs can be very crucial to monitoring climate change as well\n"
+                                                  "as sea levels. Using SAR imaging combined with despeckling techniques can provide\n"
+                                                  "ways to examine these icebergs more closely, and obtain the necessary information\n"
+                                                  "required to make predictions on the effects of climate change as well as the effects\n"
+                                                  "of the icebergs themselves on the ecosystem."), 
+                                     font=("Tw Cen MT", 15), bg='#cfcfcf', anchor='center')
+        description_label.pack(pady=(10, 10), ipady=20)
+        
+        instruction_label = tk.Label(self, text="Instructions",
+                                      font=("Tw Cen MT", 30), 
+                                      fg='#3a7ebf', bg='#cfcfcf')
+        instruction_label.pack(pady=(20, 10), ipady=20)
+        
+        instruction_label2 = tk.Label(self, text="To start, first navigate to the Model page to train the model. Modifications can be made to improve results.\n"
+                                      "Then, in the Analysis page, the trained model will predict if uploaded images are icebergs or non-icebergs.\n"
+                                      "The Gallery page will store the image and the model's prediction.",
+                                       font=("Tw Cen MT", 15), bg='#cfcfcf')
+        instruction_label2.pack(pady=(10, 10))
 
-        self.description_label = tk.Label(self, text="Images uploaded for analysis will be stored here.", 
-                                           font=("Tw Cen MT", 15), bg='#cfcfcf', anchor='center')
-        self.description_label.pack(pady=(10, 10))
-
-    def add_image(self, image_path):
-        self.images.append(image_path)
-        self.update_gallery()
-
-    def load_images_from_folder(self, folder_path):
-        self.images.clear()
-        for filename in os.listdir(folder_path):
-            if filename.lower().endswith(('.png', '.jpg', '.jpeg')): 
-                self.add_image(os.path.join(folder_path, filename))
-
-    def update_gallery(self):
-        for widget in self.image_frame.winfo_children():
-            widget.destroy()
-
-        for image_path in self.images:
-            try:
-                img = Image.open(image_path)
-                img = img.resize((100, 100), Image.LANCZOS)
-                img_tk = ImageTk.PhotoImage(img)
-                img_label = tk.Label(self.image_frame, image=img_tk)
-                img_label.image = img_tk
-                img_label.pack(side='left', padx=5, pady=5)
-                img_label.bind("<Button-1>", lambda event, path=image_path: self.open_details_page(path))
-            except Exception as e:
-                print(f"Error displaying image {image_path}: {e}")
-
-    def open_details_page(self, image_path):
-        self.master.open_details_page(image_path)
+        
+        repo_label = tk.Label(self, text="Link to the Github repository.", 
+                                  font=("Tw Cen MT", 15), bg='#cfcfcf',
+                                  cursor="hand2")
+        repo_label.pack(side='bottom', pady=(20, 10), ipady=20)
+        repo_label.bind("<Button-1>", lambda e:
+            callback("https://github.com/levictoria0117/cs171-final-project"))
 
 
