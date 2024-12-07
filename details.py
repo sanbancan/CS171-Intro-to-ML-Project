@@ -39,3 +39,5 @@ class DetailsPage(Page):
         self.result_label.config(text=f"Prediction: {self.result}")
 
 
+
+
