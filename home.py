@@ -30,7 +30,7 @@ class HomePage(Page):
         
         instruction_label2 = tk.Label(self, text="To start, first navigate to the Model page to train the model. Modifications can be made to improve results.\n"
                                       "Then, in the Analysis page, the trained model will predict if uploaded images are icebergs or non-icebergs.\n"
-                                      "The Gallery page will store the image and the model's prediction.",
+                                      "The Gallery page will store the images.",
                                        font=("Tw Cen MT", 15), bg='#cfcfcf')
         instruction_label2.pack(pady=(10, 10))
 
@@ -41,4 +41,5 @@ class HomePage(Page):
         repo_label.pack(side='bottom', pady=(20, 10), ipady=20)
         repo_label.bind("<Button-1>", lambda e:
             callback("https://github.com/levictoria0117/cs171-final-project"))
+
 
