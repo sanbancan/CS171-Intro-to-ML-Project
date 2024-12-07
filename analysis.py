@@ -79,3 +79,5 @@ class AnalysisPage(Page):
         img_normalized = img.astype('float32') / 255.0
         img_reshaped = np.reshape(img_normalized, (1, 75, 75, 1))
         return img_reshaped
+
+
