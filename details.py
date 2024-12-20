@@ -1,4 +1,3 @@
-# v3 -- testing
 import customtkinter as ctk
 import tkinter as tk
 from PIL import Image, ImageTk
@@ -38,3 +37,7 @@ class DetailsPage(Page):
 
     def display_result(self):
         self.result_label.config(text=f"Prediction: {self.result}")
+
+
+
+

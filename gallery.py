@@ -10,14 +10,14 @@ class GalleryPage(Page):
         self.images = []
         title_label = tk.Label(self, text="Gallery", 
                                font=("Tw Cen MT", 40), 
-                               fg='#3a7ebf', bg='#d9d9d9')
+                               fg='#3a7ebf', bg='#cfcfcf')
         title_label.pack(pady=(20, 0))
         
         self.image_frame = tk.Frame(self)
         self.image_frame.pack(pady=(10, 10))
 
         self.description_label = tk.Label(self, text="Images uploaded for analysis will be stored here.", 
-                                           font=("Tw Cen MT", 15), bg='#d9d9d9', anchor='center')
+                                           font=("Tw Cen MT", 15), bg='#cfcfcf', anchor='center')
         self.description_label.pack(pady=(10, 10))
 
     def add_image(self, image_path):
@@ -48,3 +48,6 @@ class GalleryPage(Page):
 
     def open_details_page(self, image_path):
         self.master.open_details_page(image_path)
+
+
+
