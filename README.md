@@ -1,4 +1,10 @@
 # CS 171 Final Project
 
-Dataset obtained from https://www.kaggle.com/competitions/statoil-iceberg-classifier-challenge/data.
-The images folder has photos from the dataset for trying out the uploading and prediction.
+# Iceberg vs Ship Detection CNN (CS171 ML Project)
+**My Contributions**: Data preprocessing/augmentation, CNN architecture design/training, experiment tracking/evaluation.  
+Victoria Lee: Data loading, baseline models.
+
+## Quick Start
+```bash
+pip install -r requirements.txt
+jupyter notebook notebooks/data_exploration_and_preprocessing.ipynb
