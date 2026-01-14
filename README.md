@@ -13,28 +13,21 @@ Classify 75×75px satellite images as **icebergs** or **ships** for maritime saf
 **Baseline**: 58% test accuracy → **Final**: 77.5% test accuracy (F1: 0.76)
 
 ## 📁 Repository Structure
+CS171-Intro-to-ML-Project/
+├── README.md                 
 ├── notebooks/
-│ ├── 01_eda.ipynb # Exploratory Data Analysis
-│ ├── 02_data_preprocessing_sania.ipynb # SANIA: Normalization + Augmentation
-│ ├── 03_model_training_victoria.ipynb # Victoria: Initial architectures
-│ ├── 04_model_evaluation_sania.ipynb # SANIA: Metrics + Comparisons
-│ └── Full_Run.ipynb # End-to-end pipeline
+│   ├── 00_eda_victoria.ipynb
+│   ├── 01_data_preprocessing_sania.ipynb  ← **SANIA**
+│   └── 03_model_experiments_sania.ipynb   ← **SANIA**
 ├── src/
-│ ├── models/
-│ │ ├── baseline_logistic.py # Simple baseline
-│ │ ├── victoria_cnn_v1.py # Victoria: 3-layer CNN
-│ │ └── sania_cnn_v2.py # SANIA: 4-layer CNN (best model)
-│ ├── data/
-│ │ └── preprocessing.py # Data pipeline
-│ └── utils/
-│ └── metrics.py # F1, confusion matrix
-├── experiments/
-│ └── hyperparameter_log_sania.csv # SANIA: 23 experiments tracked
-├── data/ # Sample images (not full dataset)
-├── results/
-│ ├── train_val_curves.png # Overfitting visualization
-│ └── confusion_matrix_best.png # Final model performance
+│   ├── data_preparation.py              ← **SANIA**
+│   ├── train_sania.py                   ← **SANIA**
+│   ├── baseline_victoria.py
+│   └── model_architectures.py
+├── data/                 ← sample_data.csv (10 images)
+├── results/              ← accuracy_plots.png, experiment_log.csv
 └── requirements.txt
+
 
 
 ## 🔧 My Contributions (Sania Bandekar)
